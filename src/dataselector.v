@@ -1,7 +1,7 @@
 module dataselector(sel,c0,c1,c2,c3,y);
 input [1:0] sel;
-input [4:0] c0,c1,c2,c3;
-output y;
+input [3:0] c0,c1,c2,c3;
+output [3:0] y;
 
 reg out;
 always @(sel) begin
