@@ -1,11 +1,11 @@
 module counter(in,ld,clk,out);
-    input [3:0] in;
+    input [15:0] in;
     input ld;
     input clk;
-    output [3:0] out;
+    output [15:0] out;
 
-    reg [3:0] cnt;
-    always @(posedge clk) begin
+    reg [15:0] cnt;
+    always @(posedge clk or ld or in) begin
         if (ld==0) begin
             cnt <= in;
         end else begin
