@@ -7,7 +7,7 @@ module decorder(op,c,sel,ld);
     reg [3:0] load;
     reg [1:0] select;
 
-    always @(op) begin      
+    always @(op or c) begin      
         case (op) 
             // ADD,A,Im
             4'b0000 : load<=4'b1110; 
