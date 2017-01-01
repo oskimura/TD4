@@ -5,7 +5,7 @@ module register(in,ld,clk,out);
   output [3:0] out;
 
   reg [3:0] mem;
-  always @(posedge clk) begin
+  always @(posedge clk or ld or in) begin
     if (ld==0) begin
       mem = in;
     end 
