@@ -67,7 +67,7 @@ module decorder(op,c,sel,ld);
             4'b0111: select=2'b11;
 
             // OUT B
-            4'b1001: select=2'b11;
+            4'b1001: select=2'b10;
             // OUT Im
             4'b1011: select=2'b11;
 
