@@ -35,8 +35,13 @@ module td4(reset,clk,inp,outp);
    
     alu alu_u(.ain(a), .bin(im), .c(cflag_r), .out(alu_out));
 
-    always @(cflag_r) begin   
-        cflag = cflag_r;
+    always @(cflag_r or reset) begin
+        if (!reset) begin
+            cflag = 1'b0;
+        end
+        else begin   
+            cflag = cflag_r;
+        end
     end
 
     decorder decorder_u(.op(op),.c(cflag),.sel(sel),.ld(ld));
