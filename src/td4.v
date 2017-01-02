@@ -5,7 +5,7 @@ module td4(reset,clk,inp,outp);
     output [3:0] outp;
 
     wire [3:0] ch0,ch1,ch2,ch3;
-    wire [15:0] addr;
+    wire [3:0] addr;
 
     wire [3:0] a;
 
