@@ -21,6 +21,7 @@ module td4(reset,clk,inp,outp);
     assign outp = ch2;
 
     mem mem_u(.addr(addr),.out(memdata));
+    assign ch3=4'b0000;
 
     wire [1:0] sel;
     register areg(.reset(reset),.in(alu_out),.ld(ld[0]),.clk(clk),.out(ch0));
