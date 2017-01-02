@@ -3,9 +3,9 @@ module counter(reset, in,ld,clk,out);
     input [3:0] in;
     input ld;
     input clk;
-    output [15:0] out;
+    output [3:0] out;
 
-    reg [15:0] cnt;
+    reg [3:0] cnt=4'b0000;
     always @(posedge clk or negedge reset) begin
         if (!reset) begin 
             cnt<=4'b0000;
