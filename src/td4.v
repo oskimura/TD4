@@ -1,4 +1,5 @@
-module td4(clk,inp,outp);
+module td4(reset,clk,inp,outp);
+    input reset;
     input clk;
     input [3:0] inp;
     output [3:0] outp;
@@ -19,13 +20,13 @@ module td4(clk,inp,outp);
     register areg(.in(alu_out),.ld(ld[0]),.clk(clk),.out(ch0));
     register breg(.in(alu_out),.ld(ld[1]),.clk(clk),.out(ch1));
     register creg(.in(alu_out),.ld(ld[2]),.clk(clk),.out(ch2));
-    counter pc(.in(alu_out),.ld(ld[3]),.clk(clk),.out(addr));
 
     assign outp = ch2;
 
     mem mem_u(.addr(addr),.out(memdata));
 
     wire [1:0] sel;
+    counter pc(.reset(reset),.in(alu_out),.ld(ld[3]),.clk(clk),.out(addr));
 
     wire [3:0] op,im;
     assign op = memdata[7:4];
