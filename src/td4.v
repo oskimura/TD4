@@ -17,15 +17,15 @@ module td4(reset,clk,inp,outp);
     reg cflag;
     wire cflga_r;
 
-    register areg(.in(alu_out),.ld(ld[0]),.clk(clk),.out(ch0));
-    register breg(.in(alu_out),.ld(ld[1]),.clk(clk),.out(ch1));
-    register creg(.in(alu_out),.ld(ld[2]),.clk(clk),.out(ch2));
 
     assign outp = ch2;
 
     mem mem_u(.addr(addr),.out(memdata));
 
     wire [1:0] sel;
+    register areg(.reset(reset),.in(alu_out),.ld(ld[0]),.clk(clk),.out(ch0));
+    register breg(.reset(reset),.in(alu_out),.ld(ld[1]),.clk(clk),.out(ch1));
+    register creg(.reset(reset),.in(alu_out),.ld(ld[2]),.clk(clk),.out(outp));
     counter pc(.reset(reset),.in(alu_out),.ld(ld[3]),.clk(clk),.out(addr));
 
     wire [3:0] op,im;

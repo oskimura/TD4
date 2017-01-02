@@ -1,18 +1,18 @@
-module register(in,ld,clk,out);
+module register(reset,in,ld,clk,out);
+  input reset;
   input [3:0] in;
   input ld;
   input clk;
   output [3:0] out;
 
-  reg [3:0] mem;
-  always @(posedge clk or ld or in) begin
-    if (ld==0) begin
+  reg [3:0] mem=4'b000;
+  always @(posedge clk or negedge reset) begin
+    if(!reset) begin
+       mem = 4'b0000;
+    end else if(!ld)begin
       mem = in;
-    end 
-    else begin
-      mem = mem;
     end
-  end
+  end 
   assign out = mem;
 
 endmodule
