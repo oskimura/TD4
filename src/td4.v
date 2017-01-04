@@ -37,6 +37,7 @@ module td4(reset,clk,inp,outp);
     alu alu_u(.ain(a), .bin(im), .c(cflag_r), .out(alu_out));
 
     always @(cflag_r or reset) begin
+    always @(posedge clk  or reset) begin
         if (!reset) begin
             cflag = 1'b0;
         end
