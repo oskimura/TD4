@@ -8,13 +8,13 @@ module counter(reset, in,ld,clk,out);
     reg [3:0] cnt=4'b0000;
     always @(posedge clk or negedge reset) begin
         if (!reset) begin 
-            cnt<=4'b0000;
+            cnt<= #1 4'b0000;
         end
         else if(ld==0) begin
-            cnt<=in;
+            cnt<= #1 in;
         end 
         else begin
-            cnt <= cnt+1;
+            cnt <= #1 cnt+1;
         end
     end
     assign out = cnt;

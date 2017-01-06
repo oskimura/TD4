@@ -8,9 +8,9 @@ module register(reset,in,ld,clk,out);
   reg [3:0] mem=4'b000;
   always @(posedge clk or negedge reset) begin
     if(!reset) begin
-       mem = 4'b0000;
+       mem =  #1 4'b0000;
     end else if(!ld)begin
-      mem = in;
+      mem =  #1 in;
     end
   end 
   assign out = mem;
